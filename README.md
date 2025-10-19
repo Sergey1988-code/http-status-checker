@@ -7,7 +7,7 @@
 
 [![Go Version](https://img.shields.io/badge/Go-1.21+-blue.svg)](https://golang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Downloads](https://img.shields.io/github/downloads/yourusername/http-status-checker/total.svg)](https://github.com/yourusername/http-status-checker/releases)
+[![Downloads](https://img.shields.io/github/downloads/Sergey1988-code/http-status-checker/total.svg)](https://github.com/Sergey1988-code/http-status-checker/releases)
 
 **Проблема:** Вам нужно проверить десятки URL? Ручной обход в браузере отнимает часы, а `curl` в цикле — это больно.
 
@@ -29,14 +29,14 @@
 
 ### Способ 1: Скачать готовый бинарник (рекомендуется)
 
-1. Перейдите на страницу [Releases](https://github.com/yourusername/http-status-checker/releases)
+1. Перейдите на страницу [Releases](https://github.com/Sergey1988-code/http-status-checker/releases)
 2. Скачайте версию для вашей ОС
 3. Распакуйте и добавьте в PATH (или используйте прямо из папки)
 
 ### Способ 2: Собрать из исходников
 
 ```bash
-git clone https://github.com/yourusername/http-status-checker.git
+git clone https://github.com/Sergey1988-code/http-status-checker.git
 cd http-status-checker
 go build -o http-status-checker main.go
 ```
@@ -167,7 +167,7 @@ echo "Проверяем здоровье сервисов..."
 
 ## 💬 Обратная связь
 
-Нашли баг или есть предложение? Создайте [Issue](https://github.com/yourusername/http-status-checker/issues)!
+Нашли баг или есть предложение? Создайте [Issue](https://github.com/Sergey1988-code/http-status-checker/issues)!
 
 **Звездуйте репозиторий ⭐ если этот инструмент сэкономил вам время!**
 
