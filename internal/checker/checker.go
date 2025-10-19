@@ -169,7 +169,7 @@ func getColorForStatus(statusCode int) string {
 		return "🔵" // Синий для перенаправлений
 	case statusCode >= 400 && statusCode < 500:
 		return "🟡" // Желтый для клиентских ошибок
-	case statusCode >= 500:
+	case statusCode >= 500 && statusCode < 600:
 		return "🔴" // Красный для серверных ошибок
 	default:
 		return "⚫" // Черный для неизвестных
@@ -186,7 +186,7 @@ func getEmojiForStatus(statusCode int) string {
 		return "❌"
 	case statusCode >= 400 && statusCode < 500:
 		return "⚠️"
-	case statusCode >= 500:
+	case statusCode >= 500 && statusCode < 600:
 		return "💥"
 	default:
 		return "❓"

@@ -13,3 +13,13 @@ test:
 
 clean:
 	rm -f $(BINARY_NAME)*
+
+test:
+	go test -v ./...
+
+test-cover:
+	go test -coverprofile=coverage.out ./...
+	go tool cover -html=coverage.out
+
+test-race:
+	go test -race ./...
