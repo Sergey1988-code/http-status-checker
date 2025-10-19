@@ -1,0 +1,40 @@
+name: Build Release
+
+on:
+  push:
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-go@v4
+      with:
+        go-version: '1.23'
+        
+    - name: Build
+      run: |
+        mkdir -p dist
+        GOOS=linux GOARCH=amd64 go build -o dist/http-status-checker-linux ./cmd/http-status-checker
+        GOOS=windows GOARCH=amd64 go build -o dist/http-status-checker-windows.exe ./cmd/http-status-checker
+        GOOS=darwin GOARCH=amd64 go build -o dist/http-status-checker-macos ./cmd/http-status-checker
+        
+    - name: Test
+      run: go test ./...
+      
+    - name: Upload PR Artifacts
+      if: github.event_name == 'pull_request'
+      uses: actions/upload-artifact@v4
+      with:
+        name: binaries
+        path: dist/
+        
+    - name: Create Release
+      if: startsWith(github.ref, 'refs/tags/v')
+      uses: softprops/action-gh-release@v1
+      with:
+        files: dist/*
