@@ -1,39 +1,36 @@
-
----
-
 # 🔍 HTTP Status Checker
 
-**Молниеносная консольная утилита для массовой проверки HTTP-статусов ваших эндпоинтов. Написана на Go для максимальной производительности.**
+**Lightning-fast command line tool for bulk HTTP status checking of your endpoints. Built in Go for maximum performance.**
 
 [![Go Version](https://img.shields.io/badge/Go-1.21+-blue.svg)](https://golang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![Downloads](https://img.shields.io/github/downloads/Sergey1988-code/http-status-checker/total.svg)](https://github.com/Sergey1988-code/http-status-checker/releases)
 
-**Проблема:** Вам нужно проверить десятки URL? Ручной обход в браузере отнимает часы, а `curl` в цикле — это больно.
+**The Problem:** Need to check dozens of URLs? Manual browser checking takes hours, and `curl` loops are painful to write and maintain.
 
-**Решение:** `http-status-checker` — ваш верный помощник. Один файл — мгновенный результат.
-
----
-
-## 🚀 Возможности
-
-- ✅ **Мгновенная проверка** сотен URL одновременно (спасибо горутинам!)
-- 📊 **Красивый цветной вывод** с интуитивной визуализацией
-- 📁 **Работа с файлами** — просто перечислите URL в текстовом файле
-- ⚡ **Невероятная скорость** — проверяет десятки URL за секунды
-- 🛡 **Без зависимостей** — единый бинарный файл для Linux, Windows, macOS
+**The Solution:** `http-status-checker` - your reliable assistant. Single binary, instant results.
 
 ---
 
-## 📦 Установка
+## 🚀 Features
 
-### Способ 1: Скачать готовый бинарник (рекомендуется)
+- ✅ **Instant checking** of hundreds URLs simultaneously (thanks to goroutines!)
+- 📊 **Beautiful color output** with intuitive visualization
+- 📁 **File support** - simply list URLs in a text file
+- ⚡ **Incredible speed** - checks dozens of URLs in seconds
+- 🛡 **No dependencies** - single binary for Linux, Windows, macOS
 
-1. Перейдите на страницу [Releases](https://github.com/Sergey1988-code/http-status-checker/releases)
-2. Скачайте версию для вашей ОС
-3. Распакуйте и добавьте в PATH (или используйте прямо из папки)
+---
 
-### Способ 2: Собрать из исходников
+## 📦 Installation
+
+### Method 1: Download pre-built binary (recommended)
+
+1. Go to [Releases](https://github.com/Sergey1988-code/http-status-checker/releases) page
+2. Download version for your OS
+3. Extract and add to PATH (or use directly from folder)
+
+### Method 2: Build from source
 
 ```bash
 git clone https://github.com/Sergey1988-code/http-status-checker.git
@@ -43,9 +40,9 @@ go build -o http-status-checker main.go
 
 ---
 
-## 🎯 Быстрый старт
+## 🎯 Quick Start
+1. **Create a file with your URLs:**
 
-1. **Создайте файл с вашими URL:**
 ```bash
 echo "https://httpstat.us/200
 https://httpstat.us/404
@@ -53,124 +50,122 @@ https://httpstat.us/500
 https://google.com" > urls.txt
 ```
 
-2. **Запустите проверку:**
+2. **Run the check:**
 ```bash
 ./http-status-checker -file urls.txt
 ```
 
-3. **Получите мгновенный результат:**
+3. **Get instant results:**
+
 ```
-🚀 Начинаем проверку 4 URL...
+🚀 Starting check of 4 URLs...
 
 ✅ 200 OK        https://httpstat.us/200
 ❌ 404 Not Found https://httpstat.us/404  
 💥 500 Internal Server Error https://httpstat.us/500
 ✅ 200 OK        https://google.com
 
-📊 Статистика:
-• Всего проверено: 4
-• Успешных (2xx): 2
-• Клиентских ошибок (4xx): 1  
-• Серверных ошибок (5xx): 1
-• Время выполнения: 0.8s
+📊 Statistics:
+• Total checked: 4
+• Successful (2xx): 2
+• Client errors (4xx): 1  
+• Server errors (5xx): 1
+• Execution time: 0.8s
 ```
 
 ---
 
-## 💡 Примеры использования
+##  Usage Examples
 
-### Базовое использование
+### 💡Basic usage
 ```bash
 ./http-status-checker -file my_urls.txt
 ```
 
-### Показать только проблемные URL
+### Show only problematic URLs
 ```bash
 ./http-status-checker -file urls.txt -only-errors
 ```
 
-### Установить таймаут (в секундах)
+### Set timeout (in seconds)
 ```bash
 ./http-status-checker -file urls.txt -timeout 10
 ```
 
-### Проверить одиночный URL (без файла)
+### Check single URL (without file)
 ```bash
 ./http-status-checker -url "https://example.com"
 ```
 
 ---
 
-## 🛠 Для разработчиков
+## 🛠 For Developers
 
-### Использование в CI/CD пайплайнах
+### Usage in CI/CD pipelines
 ```yaml
-# Пример для GitHub Actions
+# Example for GitHub Actions
 - name: Check endpoints
   run: |
     ./http-status-checker -file production-urls.txt
     if [ $? -ne 0 ]; then
-      echo "❌ Обнаружены проблемы с эндпоинтами!"
+      echo "❌ Endpoint issues detected!"
       exit 1
     fi
 ```
 
-### Использование в скриптах
+### Usage in scripts
 ```bash
 #!/bin/bash
-echo "Проверяем здоровье сервисов..."
+echo "Checking service health..."
 
 ./http-status-checker -file services.txt --silent > results.json
 
-# Дальнейшая обработка результатов...
+# Further results processing...
 ```
 
 ---
 
-## 🤝 Участие в разработке
+## 🤝 Contributing
 
-Мы приветствуем вклад в развитие проекта!
+We welcome contributions to the project!
 
-1. Форкните репозиторий
-2. Создайте ветку для вашей фичи (`git checkout -b feature/amazing-feature`)
-3. Закоммитьте изменения (`git commit -m 'Add some amazing feature'`)
-4. Запушьте в ветку (`git push origin feature/amazing-feature`)
-5. Откройте Pull Request
+1. Fork the repository
+2. Create your feature branch (git checkout -b feature/amazing-feature)
+3. Commit your changes (git commit -m 'Add some amazing feature')
+4. Push to the branch (git push origin feature/amazing-feature)
+5. Open a Pull Request
 
 ---
 
 ## 📝 Roadmap
 
-- [ ] Экспорт результатов в JSON/CSV
-- [ ] Проверка по ключевым словам в теле ответа
-- [ ] Поддержка различных HTTP-методов (POST, PUT, DELETE)
-- [ ] Конфигурационный файл для сложных сценариев
-- [ ] Мониторинг в реальном времени
+- [ ] Export results to JSON/CSV
+- [ ] Check for keywords in response body
+- [ ] Support for various HTTP methods (POST, PUT, DELETE)
+- [ ] Configuration file for complex scenarios
+- [ ] Real-time monitoring
 
 ---
 
 ## ⚠️ Troubleshooting
+**Issue:** "Permission denied" when running
+**Solution:** chmod +x http-status-checker
 
-**Проблема:** "Permission denied" при запуске
-**Решение:** `chmod +x http-status-checker`
-
-**Проблема:** URL проверяются очень медленно
-**Решение:** Убедитесь, что используете последнюю версию. Старые версии не используют конкурентность.
-
----
-
-## 📄 Лицензия
-
-Этот проект распространяется под лицензией MIT. Подробнее в файле [LICENSE](LICENSE).
+**Issue:** URLs checking very slowly
+**Solution:** Make sure you're using the latest version. Older versions don't use concurrency.
 
 ---
 
-## 💬 Обратная связь
-
-Нашли баг или есть предложение? Создайте [Issue](https://github.com/Sergey1988-code/http-status-checker/issues)!
-
-**Звездуйте репозиторий ⭐ если этот инструмент сэкономил вам время!**
+## 📄 License
+This project is distributed under MIT License. See  [LICENSE](LICENSE) file for details.
 
 ---
 
-*Сделано с ❤️ на Go*
+## 💬 Feedback
+Found a bug or have a suggestion? Create an [Issue](https://github.com/Sergey1988-code/http-status-checker/issues)!
+
+**Star the repository ⭐ if this tool saved you time!**
+
+---
+
+*Made with ❤️ in Go*
