@@ -154,10 +154,10 @@ func PrintResults(results []types.Result) {
 		}
 	}
 
-	fmt.Printf("📊 Статистика:\n")
-	fmt.Printf("   • Успешных: %d\n", successCount)
-	fmt.Printf("   • Ошибок: %d\n", errorCount)
-	fmt.Printf("   • Всего: %d\n", len(results))
+	fmt.Printf("📊 Statistics:\n")
+	fmt.Printf("   • Successful: %d\n", successCount)
+	fmt.Printf("   • Errors: %d\n", errorCount)
+	fmt.Printf("   • Total: %d\n", len(results))
 }
 
 // Вспомогательные функции для оформления
